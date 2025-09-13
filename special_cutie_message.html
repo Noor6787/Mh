@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Special Cutie ❤️</title>
+  <style>
+    html,body{height:100%;margin:0;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#ffd6e0;}
+    .wrap{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#3a0b0b;text-align:center;padding:20px}
+    .card{background:linear-gradient(135deg, rgba(255,255,255,0.75), rgba(255,255,255,0.9)); padding:28px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.12);max-width:720px;width:100%}
+    h1{font-size:42px;margin:0 0 10px;color:#b3002d}
+    p.lead{font-size:16px;opacity:0.95;margin:0 0 18px;color:#6b0f1f}
+    .btn{display:inline-block;padding:12px 22px;border-radius:999px;background:linear-gradient(90deg,#ff6b6b,#ff8e53);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(255,110,110,0.18);cursor:pointer;border:none}
+    #reveal{font-size:20px;margin-top:18px;display:none}
+    #reveal h2{font-size:36px;margin:6px 0 6px;font-weight:800;color:#b3002d}
+    #reveal p{margin:6px 0 0;color:#6b0f1f;font-size:18px;line-height:1.4}
+    footer{font-size:12px;opacity:.7;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Special Cutie ❤️</h1>
+      <p class="lead">Bas ek button dabao...</p>
+      <button id="btn" class="btn">Open Surprise</button>
+      <div id="reveal" aria-hidden="true">
+        <h2>I LOVE YOU ❤️</h2>
+        <p>Tari ha j hoy to koi jabar jasti nathi ❤️<br>
+        Tane mu pasand hoy to ane mu taro sath hamesha nibhavis 💕<br>
+        Ek var tu ha kaide, tara mate kai bi karish my cutie 💓</p>
+      </div>
+    </div>
+    <footer>Tap the button to reveal.</footer>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const reveal = document.getElementById('reveal');
+    btn.addEventListener('click', ()=>{
+      reveal.style.display = 'block';
+      reveal.setAttribute('aria-hidden','false');
+      btn.style.display = 'none';
+      try{
+        const msg = new SpeechSynthesisUtterance("I love you");
+        msg.lang = 'en-US';
+        window.speechSynthesis.speak(msg);
+      }catch(e){}
+      // small animation
+      reveal.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}], {duration:600, easing:'ease-out'});
+    });
+  </script>
+</body>
+</html>
